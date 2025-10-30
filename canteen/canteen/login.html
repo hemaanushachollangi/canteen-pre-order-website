@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>BVC Canteen - Login</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="canteen-header">
+      <img src="bvc.jpg" alt="BVC Logo" class="logo" />
+      <h1>BVC Canteen</h1>
+    </div>
+
+    <div class="form-box">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required /><br />
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          required
+        /><br />
+        <button type="submit">Login</button>
+        <div class="error" id="error"></div>
+      </form>
+      <p>Don't have an account? <a href="signup.html">Signup Here</a></p>
+    </div>
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value.trim();
+          const errorDiv = document.getElementById("error");
+
+          const storedUserJSON = localStorage.getItem("canteenUser");
+          if (!storedUserJSON) {
+            errorDiv.textContent = "No user found. Please signup first.";
+            return;
+          }
+          const storedUser = JSON.parse(storedUserJSON);
+          if (storedUser.email === email && storedUser.password === password) {
+            alert("Login successful!");
+            window.location.href = "canteens.html";
+          } else {
+            errorDiv.textContent =
+              "Invalid credentials! Please enter valid email and password.";
+          }
+        });
+    </script>
+    <script>
+      const user = localStorage.getItem("canteenUser");
+      if (!user) {
+        alert("Please login first!");
+        window.location.href = "login.html";
+      }
+    </script>
+  </body>
+</html>

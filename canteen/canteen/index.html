@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Welcome - Choose Role</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom right, #f9f9f9, #e0e0e0);
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 48px;
+        color: #333;
+        margin-bottom: 40px;
+      }
+
+      .role-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+      }
+
+      .role-btn {
+        width: 200px;
+        height: 200px;
+        border-radius: 20px;
+        border: none;
+        font-size: 32px;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .role-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .user-btn {
+        background: linear-gradient(to bottom right, #00bfff, #0077b6);
+      }
+
+      .admin-btn {
+        background: linear-gradient(to bottom right, #ff6600, #cc3300);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Choose Your Role</h1>
+      <div class="role-buttons">
+        <button class="role-btn user-btn" onclick="location.href='login.html'">
+          USER
+        </button>
+        <button
+          class="role-btn admin-btn"
+          onclick="location.href='admin-login.html'"
+        >
+          ADMIN
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

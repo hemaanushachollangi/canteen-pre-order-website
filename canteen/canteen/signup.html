@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>BVC Canteen - Signup</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="canteen-header">
+      <img src="bvc.jpg" alt="BVC Logo" class="logo" />
+      <h1>BVC Canteen</h1>
+    </div>
+
+    <div class="form-box">
+      <h2>Signup</h2>
+      <form id="signupForm">
+        <input
+          type="text"
+          id="username"
+          placeholder="Username"
+          required
+        /><br />
+        <input type="email" id="email" placeholder="Email" required /><br />
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          required
+        /><br />
+        <button type="submit">Signup</button>
+        <div class="error" id="error"></div>
+      </form>
+      <p>Already have an account? <a href="login.html">Login Here</a></p>
+    </div>
+
+    <script>
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const username = document.getElementById("username").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value.trim();
+          const errorDiv = document.getElementById("error");
+
+          // Password validation rules
+          const uppercaseRegex = /^[A-Z]/;
+          const numberRegex = /[0-9]/;
+          const lowercaseRegex = /[a-z]/;
+          const specialCharRegex = /[^A-Za-z0-9]/;
+
+          if (password.length < 6) {
+            errorDiv.textContent =
+              "Password must be at least 6 characters long.";
+            return;
+          }
+          if (!uppercaseRegex.test(password)) {
+            errorDiv.textContent =
+              "Password must start with an uppercase letter.";
+            return;
+          }
+          if (!lowercaseRegex.test(password)) {
+            errorDiv.textContent =
+              "Password must contain at least one lowercase letter.";
+            return;
+          }
+          if (!numberRegex.test(password)) {
+            errorDiv.textContent = "Password must contain at least one number.";
+            return;
+          }
+          if (!specialCharRegex.test(password)) {
+            errorDiv.textContent =
+              "Password must contain at least one special character.";
+            return;
+          }
+
+          // Save user details
+          const user = { username, email, password };
+          localStorage.setItem("canteenUser", JSON.stringify(user));
+          alert("Signup successful! Please login.");
+          window.location.href = "login.html";
+        });
+    </script>
+  </body>
+</html>

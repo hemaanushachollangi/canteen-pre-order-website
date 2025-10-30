@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CafeBite Menu</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden;
+      }
+      header {
+        background-color: #2e7031;
+        color: white;
+        padding: 20px;
+        font-size: 32px;
+        font-weight: bold;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .my-orders-link {
+        color: white;
+        font-size: 16px;
+        text-decoration: underline;
+        margin-right: 20px;
+      }
+      .menu-container {
+        position: absolute;
+        top: 80px;
+        bottom: 80px;
+        left: 0;
+        right: 0;
+        overflow-y: auto;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .menu-item {
+        background: white;
+        margin-bottom: 15px;
+        padding: 15px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .item-info h3 {
+        margin: 0;
+        font-size: 20px;
+        color: #333;
+      }
+      .item-info p {
+        margin: 2px 0;
+        color: #777;
+      }
+      input[type="number"] {
+        width: 60px;
+        padding: 6px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        text-align: center;
+      }
+      footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #2e7031;
+        color: white;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+      }
+      footer button {
+        background-color: #205022;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      footer button:hover {
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span>CafeBite - Menu</span>
+      <a href="my_orders.html" class="my-orders-link">My Orders</a>
+    </header>
+
+    <div class="menu-container" id="menuContainer">
+      <!-- Your menu items here exactly as you had them -->
+      <div class="menu-item">
+        <div class="item-info">
+          <h3>Paneer Biryani</h3>
+          <p>₹120</p>
+        </div>
+        <input
+          type="number"
+          min="0"
+          value="0"
+          data-price="120"
+          class="quantity"
+        />
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h3>Dhum Biryani</h3>
+          <p>₹150</p>
+        </div>
+        <input
+          type="number"
+          min="0"
+          value="0"
+          data-price="150"
+          class="quantity"
+        />
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h3>Mughalay Biryani</h3>
+          <p>₹160</p>
+        </div>
+        <input
+          type="number"
+          min="0"
+          value="0"
+          data-price="160"
+          class="quantity"
+        />
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h3>Veg Fried Rice</h3>
+          <p>₹80</p>
+        </div>
+        <input
+          type="number"
+          min="0"
+          value="0"
+          data-price="80"
+          class="quantity"
+        />
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h3>Chicken Fried Rice</h3>
+          <p>₹100</p>
+        </div>
+        <input
+          type="number"
+          min="0"
+          value="0"
+          data-price="100"
+          class="quantity"
+        />
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h3>Chicken Biryani</h3>
+          <p>₹140</p>
+        </div>
+        <input
+          type="number"
+          min="0"
+          value="0"
+          data-price="140"
+          class="quantity"
+        />
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h3>Chicken Fry</h3>
+          <p>₹110</p>
+        </div>
+        <input
+          type="number"
+          min="0"
+          value="0"
+          data-price="110"
+          class="quantity"
+        />
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h3>Chicken Curry</h3>
+          <p>₹120</p>
+        </div>
+        <input
+          type="number"
+          min="0"
+          value="0"
+          data-price="120"
+          class="quantity"
+        />
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h3>Paneer Curry</h3>
+          <p>₹90</p>
+        </div>
+        <input
+          type="number"
+          min="0"
+          value="0"
+          data-price="90"
+          class="quantity"
+        />
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h3>Veg Curry</h3>
+          <p>₹80</p>
+        </div>
+        <input
+          type="number"
+          min="0"
+          value="0"
+          data-price="80"
+          class="quantity"
+        />
+      </div>
+      <div class="menu-item">
+        <div class="item-info">
+          <h3>Sambar</h3>
+          <p>₹50</p>
+        </div>
+        <input
+          type="number"
+          min="0"
+          value="0"
+          data-price="50"
+          class="quantity"
+        />
+      </div>
+    </div>
+
+    <footer>
+      <div>Total: ₹<span id="total">0</span></div>
+      <button onclick="placeOrder()">Place Order</button>
+    </footer>
+
+    <script>
+      const totalDisplay = document.getElementById("total");
+
+      function getCanteenName() {
+        if (window.location.href.includes("cafebite")) return "CafeBite";
+        if (window.location.href.includes("cafepanda")) return "CafePanda";
+        if (window.location.href.includes("cafeteria")) return "Cafeteria";
+        return "Unknown";
+      }
+
+      function calculateTotal() {
+        let total = 0;
+        document.querySelectorAll(".quantity").forEach((input) => {
+          const qty = parseInt(input.value) || 0;
+          const price = parseInt(input.getAttribute("data-price"));
+          total += qty * price;
+        });
+        totalDisplay.textContent = total;
+      }
+
+      document.querySelectorAll(".quantity").forEach((input) => {
+        input.addEventListener("input", calculateTotal);
+      });
+
+      function applyAvailability() {
+        const canteen = getCanteenName().toLowerCase();
+        const data = localStorage.getItem(`${canteen}MenuAvailability`);
+        if (!data) return;
+        const availability = JSON.parse(data);
+
+        let anyShown = false;
+        document.querySelectorAll(".menu-item").forEach((item) => {
+          const name = item.querySelector("h3").textContent.trim();
+          if (availability[name]) {
+            item.style.display = "flex";
+            anyShown = true;
+          } else {
+            item.style.display = "none";
+          }
+        });
+
+        if (!anyShown) {
+          alert("Sorry, no items are available right now.");
+        }
+      }
+
+      window.onload = applyAvailability;
+
+      function placeOrder() {
+        const canteen = getCanteenName();
+        const raw = localStorage.getItem(
+          `${canteen.toLowerCase()}MenuAvailability`
+        );
+        if (!raw) {
+          alert("Sorry, no items are available right now.");
+          return;
+        }
+
+        const availability = JSON.parse(raw);
+        const availableItems = Array.from(
+          document.querySelectorAll(".menu-item")
+        ).filter((item) => {
+          const name = item.querySelector("h3").textContent.trim();
+          return availability[name];
+        });
+
+        if (availableItems.length === 0) {
+          alert("Sorry, no items are available right now.");
+          return;
+        }
+
+        const orderedItems = [];
+        let orderTotal = 0;
+
+        availableItems.forEach((item) => {
+          const input = item.querySelector("input.quantity");
+          const qty = parseInt(input.value);
+          if (qty && qty > 0) {
+            const name = item.querySelector("h3").textContent.trim();
+            const price = parseInt(input.getAttribute("data-price"));
+            orderedItems.push(`${name} x${qty}`);
+            orderTotal += qty * price;
+          }
+        });
+
+        if (orderedItems.length === 0) {
+          alert("Please select at least one item!");
+          return;
+        }
+
+        const orderId = `ORD-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+        const order = {
+          id: orderId,
+          canteen: canteen,
+          items: orderedItems,
+          total: orderTotal,
+          confirmed: true,
+        };
+
+        const allOrders =
+          JSON.parse(localStorage.getItem("canteenOrders")) || [];
+        allOrders.push(order);
+        localStorage.setItem("canteenOrders", JSON.stringify(allOrders));
+
+        alert(
+          `Order Placed Successfully!\nYour Order ID: ${orderId}\nStatus: Confirmed\nTotal: ₹${orderTotal}`
+        );
+
+        window.location.href = "my_orders.html";
+      }
+    </script>
+  </body>
+</html>

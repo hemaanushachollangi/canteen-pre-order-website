@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Dashboard</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #cc3300;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 32px;
+        font-weight: bold;
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      header span {
+        flex-grow: 1;
+      }
+
+      .menu-control-btn {
+        background-color: #ffffff;
+        color: #cc3300;
+        border: 2px solid #ffffff;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-right: 20px;
+        transition: background-color 0.2s, color 0.2s;
+      }
+
+      .menu-control-btn:hover {
+        background-color: #cc3300;
+        color: white;
+        border-color: white;
+      }
+
+      .orders-container {
+        max-width: 800px;
+        margin: 30px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .order {
+        border-bottom: 1px solid #ddd;
+        padding: 15px 0;
+      }
+
+      .order:last-child {
+        border-bottom: none;
+      }
+
+      .order h3 {
+        margin: 0;
+        font-size: 20px;
+        color: #333;
+      }
+
+      .order p {
+        margin: 5px 0;
+        color: #666;
+      }
+
+      .order-id {
+        color: #cc3300;
+        font-weight: bold;
+        word-break: break-all;
+      }
+
+      .confirm-btn {
+        padding: 8px 15px;
+        background-color: #cc3300;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+
+      .confirm-btn:disabled {
+        background-color: #999;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span>Admin Dashboard - Track Orders</span>
+      <button
+        class="menu-control-btn"
+        onclick="location.href='admin-menu-control.html'"
+      >
+        Go to Menu Control
+      </button>
+    </header>
+
+    <div class="orders-container" id="ordersContainer">
+      <!-- Orders will appear here -->
+    </div>
+
+    <script>
+      const ordersContainer = document.getElementById("ordersContainer");
+      const orders = JSON.parse(localStorage.getItem("canteenOrders")) || [];
+
+      function renderOrders() {
+        ordersContainer.innerHTML = "";
+        if (orders.length === 0) {
+          ordersContainer.innerHTML = "<p>No orders yet.</p>";
+          return;
+        }
+
+        orders.forEach((order, index) => {
+          const div = document.createElement("div");
+          div.className = "order";
+          div.innerHTML = `
+            <h3>Order #${index + 1}</h3>
+            <p><strong>Order ID:</strong> <span class="order-id">${
+              order.id
+            }</span></p>
+            <p><strong>Canteen:</strong> ${order.canteen}</p>
+            <p><strong>Items:</strong> ${order.items.join(", ")}</p>
+            <p><strong>Total:</strong> ₹${order.total}</p>
+            <p><strong>Status:</strong> <span id="status-${index}">${
+            order.confirmed ? "Confirmed" : "Pending"
+          }</span></p>
+            <button class="confirm-btn" ${
+              order.confirmed ? "disabled" : ""
+            } onclick="confirmOrder(${index})">
+              ${order.confirmed ? "Confirmed" : "Confirm Order"}
+            </button>
+          `;
+          ordersContainer.appendChild(div);
+        });
+      }
+
+      function confirmOrder(index) {
+        orders[index].confirmed = true;
+        localStorage.setItem("canteenOrders", JSON.stringify(orders));
+        renderOrders();
+      }
+
+      renderOrders();
+    </script>
+  </body>
+</html>

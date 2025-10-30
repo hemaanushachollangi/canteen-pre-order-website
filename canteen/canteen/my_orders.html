@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Orders</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        margin-top: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      th,
+      td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+      th {
+        background-color: #2e7031;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      .no-orders {
+        text-align: center;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My Orders</h1>
+    <div id="ordersContainer"></div>
+
+    <script>
+      const container = document.getElementById("ordersContainer");
+      const allOrders = JSON.parse(localStorage.getItem("canteenOrders")) || [];
+
+      if (allOrders.length === 0) {
+        container.innerHTML = `<div class="no-orders">No orders found.</div>`;
+      } else {
+        let tableHTML = `
+        <table>
+          <tr>
+            <th>Order ID</th>
+            <th>Canteen</th>
+            <th>Items</th>
+            <th>Total (₹)</th>
+            <th>Status</th>
+          </tr>
+      `;
+
+        allOrders.forEach((order) => {
+          tableHTML += `
+          <tr>
+            <td>${order.id || "-"}</td>
+            <td>${order.canteen}</td>
+            <td>${order.items.join("<br>")}</td>
+            <td>${order.total}</td>
+            <td>${order.confirmed ? "Confirmed" : "Pending"}</td>
+          </tr>
+        `;
+        });
+
+        tableHTML += `</table>`;
+        container.innerHTML = tableHTML;
+      }
+    </script>
+  </body>
+</html>

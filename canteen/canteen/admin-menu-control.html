@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Menu Control</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #cc3300;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      nav {
+        background-color: #eee;
+        padding: 10px;
+        text-align: center;
+      }
+
+      nav a {
+        text-decoration: none;
+        font-size: 18px;
+        color: #cc3300;
+      }
+
+      nav a:hover {
+        text-decoration: underline;
+      }
+
+      .menu-section {
+        max-width: 800px;
+        margin: 30px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+      }
+
+      h2 {
+        margin-top: 0;
+        color: #cc3300;
+      }
+
+      .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .item:last-child {
+        border-bottom: none;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #cc3300;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background-color: #993300;
+      }
+    </style>
+  </head>
+  <body>
+    <header>Admin - Control Menu Availability</header>
+
+    <nav>
+      <a href="admin-dashboard.html">⬅ Back to Admin Dashboard</a>
+    </nav>
+
+    <div class="menu-section" id="cafebite">
+      <h2>Cafebite Menu</h2>
+      <div class="item">
+        <span>Paneer Biryani</span>
+        <input type="checkbox" data-item="Paneer Biryani" />
+      </div>
+      <div class="item">
+        <span>Dhum Biryani</span>
+        <input type="checkbox" data-item="Dhum Biryani" />
+      </div>
+      <div class="item">
+        <span>Mughalay Biryani</span>
+        <input type="checkbox" data-item="Mughalay Biryani" />
+      </div>
+      <div class="item">
+        <span>Veg Fried Rice</span>
+        <input type="checkbox" data-item="Veg Fried Rice" />
+      </div>
+      <div class="item">
+        <span>Chicken Fried Rice</span>
+        <input type="checkbox" data-item="Chicken Fried Rice" />
+      </div>
+      <div class="item">
+        <span>Chicken Biryani</span>
+        <input type="checkbox" data-item="Chicken Biryani" />
+      </div>
+      <div class="item">
+        <span>Chicken Fry</span>
+        <input type="checkbox" data-item="Chicken Fry" />
+      </div>
+      <div class="item">
+        <span>Chicken Curry</span>
+        <input type="checkbox" data-item="Chicken Curry" />
+      </div>
+      <div class="item">
+        <span>Paneer Curry</span>
+        <input type="checkbox" data-item="Paneer Curry" />
+      </div>
+      <div class="item">
+        <span>Veg Curry</span>
+        <input type="checkbox" data-item="Veg Curry" />
+      </div>
+      <div class="item">
+        <span>Sambar</span>
+        <input type="checkbox" data-item="Sambar" />
+      </div>
+      <button onclick="saveMenu('cafebite')">Save Cafebite Menu</button>
+    </div>
+
+    <div class="menu-section" id="cafepanda">
+      <h2>Cafepanda Menu</h2>
+      <div class="item">
+        <span>Sandwich</span>
+        <input type="checkbox" data-item="Sandwich" />
+      </div>
+      <div class="item">
+        <span>Burger</span>
+        <input type="checkbox" data-item="Burger" />
+      </div>
+      <div class="item">
+        <span>French Fries</span>
+        <input type="checkbox" data-item="French Fries" />
+      </div>
+      <div class="item">
+        <span>Mocktails</span>
+        <input type="checkbox" data-item="Mocktails" />
+      </div>
+      <div class="item">
+        <span>Pizza</span>
+        <input type="checkbox" data-item="Pizza" />
+      </div>
+      <div class="item">
+        <span>Manchuria</span>
+        <input type="checkbox" data-item="Manchuria" />
+      </div>
+      <div class="item">
+        <span>Chicken Lollypop</span>
+        <input type="checkbox" data-item="Chicken Lollypop" />
+      </div>
+      <div class="item">
+        <span>Milk Shakes</span>
+        <input type="checkbox" data-item="Milk Shakes" />
+      </div>
+      <div class="item">
+        <span>Rose Milk</span>
+        <input type="checkbox" data-item="Rose Milk" />
+      </div>
+      <div class="item">
+        <span>Noodles</span>
+        <input type="checkbox" data-item="Noodles" />
+      </div>
+      <button onclick="saveMenu('cafepanda')">Save Cafepanda Menu</button>
+    </div>
+
+    <div class="menu-section" id="cafeteria">
+      <h2>Cafeteria Menu</h2>
+      <div class="item">
+        <span>Chocolate</span>
+        <input type="checkbox" data-item="Chocolate" />
+      </div>
+      <div class="item">
+        <span>Ice Creams</span>
+        <input type="checkbox" data-item="Ice Creams" />
+      </div>
+      <div class="item">
+        <span>Samosa</span>
+        <input type="checkbox" data-item="Samosa" />
+      </div>
+      <div class="item">
+        <span>Kurkure</span>
+        <input type="checkbox" data-item="Kurkure" />
+      </div>
+      <div class="item">
+        <span>Biscuits</span>
+        <input type="checkbox" data-item="Biscuits" />
+      </div>
+      <div class="item">
+        <span>Drinks</span>
+        <input type="checkbox" data-item="Drinks" />
+      </div>
+      <div class="item">
+        <span>Puffs</span>
+        <input type="checkbox" data-item="Puffs" />
+      </div>
+      <button onclick="saveMenu('cafeteria')">Save Cafeteria Menu</button>
+    </div>
+
+    <script>
+      // Load availability on page load
+      window.onload = () => {
+        ["cafebite", "cafepanda", "cafeteria"].forEach(loadMenu);
+      };
+
+      function loadMenu(canteen) {
+        const data =
+          JSON.parse(localStorage.getItem(`${canteen}MenuAvailability`)) || {};
+        document
+          .querySelectorAll(`#${canteen} input[type="checkbox"]`)
+          .forEach((chk) => {
+            chk.checked = !!data[chk.getAttribute("data-item")];
+          });
+      }
+
+      function saveMenu(canteen) {
+        const checkboxes = document.querySelectorAll(
+          `#${canteen} input[type="checkbox"]`
+        );
+        const availability = {};
+        checkboxes.forEach((chk) => {
+          availability[chk.getAttribute("data-item")] = chk.checked;
+        });
+        localStorage.setItem(
+          `${canteen}MenuAvailability`,
+          JSON.stringify(availability)
+        );
+        alert(`Saved availability for ${canteen}`);
+      }
+    </script>
+  </body>
+</html>
